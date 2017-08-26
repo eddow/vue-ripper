@@ -4,7 +4,12 @@ function render(h, tag, slot) {
 	console.error('Ripped has no surrounding tag and has many vnodes to render')
 }
 
-export const Ripper = {render(h) { return h(); }};
+export const Ripper = {
+	render(h) {
+		this.$parent.$emit('rendering')
+		return h();
+	}
+};
 export const Pimp = {
 	model: {
 		prop: 'items',
@@ -49,6 +54,17 @@ export const Ripped = {
 		template: {default: 'default', type: String},
 		scope: {type: Object},
 		ripper: {type: Object}
+	},
+	methods: {
+		childUpdate: function() {
+			this.$forceUpdate();
+		}
+	},
+	mounted() {
+		if(!this.scope) this.ripper.$on('rendering', this.childUpdate);
+	},
+	destroyed() {
+		if(!this.scope) this.ripper.$off('rendering', this.childUpdate);
 	},
 	render(h) {
 		var ripper = this.ripper.$children[0],
