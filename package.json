@@ -1,0 +1,34 @@
+{
+  "name": "vue-ripper",
+  "version": "1.0.0",
+  "description": "Ripping components appart with vue2",
+  "main": "dist/vue-ripper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eddow/vue-ripper.git"
+  },
+  "keywords": [
+    "utility",
+    "component",
+    "vue"
+  ],
+  "author": "fmdm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eddow/vue-ripper/issues"
+  },
+  "homepage": "https://github.com/eddow/vue-ripper#readme",
+  "devDependencies": {
+    "fuse-box": "file:.yalc/fuse-box",
+    "typescript": "^2.4.2",
+    "vue-property-decorator": "^5.2.1",
+    "vue-template-compiler": "^2.4.2",
+    "vue-template-es2015-compiler": "^1.5.3"
+  },
+  "dependencies": {
+    "vue": "^2.4.2"
+  }
+}
