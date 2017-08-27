@@ -23,12 +23,14 @@
 						:scope="{number, index}" />
 				</tr>
 			</tbody>
+		</table>
+		--{{columns && columns.length}}--
 	</div>
 </template>
 
 <script lang="ts">
 import * as Vue from 'vue'
-import {Component, Inject, Model, Prop, Watch, Emit} from 'vue-property-decorator'
+import {Component, Inject, Model, Prop, Watch} from 'vue-property-decorator'
 import column from './column.vue'
 
 @Component({components:{column}})
