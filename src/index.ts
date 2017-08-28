@@ -5,7 +5,8 @@ function render(h, tag, slot) {
 }
 
 export const Ripper = {
-	render(h) { return h(); }
+	render(h) { return h(); },
+	updated() { this.$parent.$emit('updated'); }
 };
 export const Pimp = {
 	model: {
