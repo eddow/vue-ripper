@@ -5,10 +5,7 @@ function render(h, tag, slot) {
 }
 
 export const Ripper = {
-	render(h) {
-		this.$parent.$emit('rendering')
-		return h();
-	}
+	render(h) { return h(); }
 };
 export const Pimp = {
 	model: {
@@ -62,10 +59,10 @@ export const Ripped = {
 		}
 	},
 	mounted() {
-		if(!this.scope) this.ripper.$on('rendering', this.childUpdate);
+		if(!this.scope) this.ripper.$on('updated', this.childUpdate);
 	},
 	destroyed() {
-		if(!this.scope) this.ripper.$off('rendering', this.childUpdate);
+		if(!this.scope) this.ripper.$off('updated', this.childUpdate);
 	},
 	render(h) {
 		var ripper = this.ripper.$children[0],
