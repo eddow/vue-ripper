@@ -68,9 +68,10 @@ export const Ripped = {
 	render(h) {
 		var ripper = this.ripper.$children[0],
 			slot = this.scope ?
-			ripper.$scopedSlots[this.template](this.scope) :
+			ripper.$scopedSlots[this.template] &&
+				ripper.$scopedSlots[this.template](this.scope) :
 			ripper.$slots[this.template];
-		return render(h, this.tag, slot);
+		return render(h, this.tag, slot || this.$slots.default);
 	}
 };
 

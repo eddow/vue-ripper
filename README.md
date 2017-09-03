@@ -33,7 +33,7 @@ npm install --save vue-ripper
 ```
 
 ```typescript
-import {ripper, pimp, ripped} from 'vue-ripper'
+import {Ripper, Pimp, Ripped} from 'vue-ripper'
 - or -
 import ripper from 'vue-ripper'
 Vue.install(ripper);
@@ -81,7 +81,9 @@ For example, to render the header of a column :
 		tag="th"
 		template="header"
 		:ripper="column"
-	/>
+	>
+		A field
+	</ripped>
 </tr>
 ```
 
@@ -89,6 +91,8 @@ For example, to render the header of a column :
 - `template`: Template name, defaults to `default`
 - `scope`: If given, the template will be a scoped slot.
 - `ripper`: The `VueComponent` to rip appart.
+
+If the ripper doesn't give the slot, the `ripped`'s slot will be used instead.
 
 ## Support development
 I contribute for free with drive, passion and time.
@@ -98,5 +102,5 @@ These are the only *like* buttons that have a real effect.
 
 - [paypal.me/eeddow](https://www.paypal.me/eeddow)
 - ETH: 0xb79b61130bc5726ddab6c1d59c3e0479afe69540
-- BTC: 39ybn3KGNUvZrhifaLJcf4cJdzkGMdfAMT
+- BTC: 38HbE73qfLf2qP6Ce1ppYwZf458nugS3KY
 - BCH: 3K81iYWwLZuWXY1qHcBL559FYraUqKMkEp
