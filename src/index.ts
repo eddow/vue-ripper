@@ -1,9 +1,3 @@
-function render(h, tag, slot) {
-	if(tag) return h(tag, slot);
-	if(1< slot.length) return slot[0];
-	console.error('Ripped has no surrounding tag and has many vnodes to render')
-}
-
 export const Ripper = {
 	render(h) { return h(); },
 	updated() { this.$parent.$emit('updated'); }
@@ -29,9 +23,9 @@ export const Pimp = {
 			this.$emit('items', slots);
 		}
 	},
-	props: ['items', 'tag'],
+	props: ['items'],
 	render(h) {
-		return h(this.tag||'div', {style:{display: 'none'}}, this.$slots.default);
+		return h(this.$vnode.data.tag||'div', {style:{display: 'none'}}, this.$slots.default);
 	},
 	mounted() {
 		//We wrap the values in a function to be sure the vnodes does not become observed
@@ -49,7 +43,6 @@ export const Pimp = {
 
 export const Ripped = {
 	props: {
-		tag: {type: String},
 		template: {default: 'default', type: String},
 		scope: {type: Object},
 		ripper: {type: Object}
@@ -71,11 +64,32 @@ export const Ripped = {
 			ripper.$scopedSlots[this.template] &&
 				ripper.$scopedSlots[this.template](this.scope) :
 			ripper.$slots[this.template];
-		return render(h, this.tag, slot || this.$slots.default);
+		if(!slot) slot = this.$slots.default;
+		if(this.$vnode.data.tag) return h(this.$vnode.data.tag, slot);
+		if(1< slot.length) return slot[0];
+		console.error('Ripped has no surrounding tag and has many vnodes to render')
 	}
 };
 
-const components = {Ripper, Pimp, Ripped};
+/**
+ * Allow you to provide slots and the order in which the slots are displayed
+ */
+export const Depot = {
+	props: {
+		order: {type: Array, required: true},
+		map: Function	//(string, vnode[], renderFunction) => vnode[]
+	},
+	render: function(h) {
+		var children = [], slot;
+		for(let name of this.order||['default']) {
+			let slot = this.$slots[name];
+			children = children.concat((this.map && this.map(slot, name, h)) || slot);
+		}
+		return h(this.$vnode.data.tag||'div', children);
+	}
+}
+
+const components = {Ripper, Pimp, Ripped, Depot};
 export default {
 	install(Vue, options) {
 		for(let i in components) Vue.component(i, components[i]);

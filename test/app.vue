@@ -8,8 +8,7 @@
 		<table>
 			<thead>
 				<tr>
-					<ripped v-for="(column, uid) in columns" :key="uid"
-						tag="th"
+					<th is="ripped" v-for="(column, uid) in columns" :key="uid"
 						template="header"
 						:ripper="column"
 					/>
@@ -17,14 +16,18 @@
 			</thead>
 			<tbody>
 				<tr v-for="(number, index) in numbers" :key="index">
-					<ripped v-for="(column, uid) in columns" :key="uid"
-						tag="td"
+					<td is="ripped" v-for="(column, uid) in columns" :key="uid"
 						:ripper="column"
 						:scope="{number, index}" />
 				</tr>
 			</tbody>
 		</table>
 		--{{columns && columns.length}}--
+		<depot :order="['a','c','b']">
+			<div slot="c">Slot C.</div>
+			<div slot="b">Slot B.</div>
+			<div slot="a">Slot A.</div>
+		</depot>
 	</div>
 </template>
 
