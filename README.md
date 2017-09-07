@@ -98,11 +98,12 @@ For example, to render the cells of a given `row`:
 	:scope="{row}" />
 ```
 
+If a custom render function is provided, this function is called with the `createNode` function and the slot (`vNode[]`) as arguments.
 If no tag is given (by using `<ripped ...>`), then the template must contain exactly one element and it won't be wrapped. If a tag is given (by using `<span is="ripped" ...>`), it will wrap the template.
 - `template`: Name of the slot taken from the `ripper`, defaults to `default`
 - `scope`: If given, the template will be a scoped slot.
 - `ripper`: The `VueComponent` to rip appart.
-
+- `render: (h: createNode, slot: vNode[]) => vNode[]` to render programatically the ripped.
 If the ripper doesn't give the slot, the `ripped`'s content will be used instead.
 
 ## Depot

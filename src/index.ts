@@ -45,7 +45,8 @@ export const Ripped = {
 	props: {
 		template: {default: 'default', type: String},
 		scope: {type: Object},
-		ripper: {type: Object}
+		ripper: {type: Object},
+		render: {type: Function}
 	},
 	methods: {
 		childUpdate: function() {
@@ -65,6 +66,7 @@ export const Ripped = {
 				ripper.$scopedSlots[this.template](this.scope) :
 			ripper.$slots[this.template];
 		if(!slot) slot = this.$slots.default;
+		if(this.render) return this.render(h, slot);
 		if(this.$vnode.data.tag) return h(this.$vnode.data.tag, slot);
 		if(1< slot.length) return slot[0];
 		console.error('Ripped has no surrounding tag and has many vnodes to render')

@@ -1,6 +1,6 @@
 {
   "name": "vue-ripper",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Ripping components appart with vue2",
   "main": "dist/vue-ripper.js",
   "scripts": {
@@ -13,7 +13,8 @@
   "keywords": [
     "utility",
     "component",
-    "vue"
+		"vue",
+		"custom"
   ],
   "author": "fmdm",
   "license": "MIT",
