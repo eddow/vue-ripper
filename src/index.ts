@@ -7,14 +7,12 @@ export const Pimp = {
 		prop: 'items',
 		event: 'items'
 	},
-	computed: {
-		slots: function() {
+	methods: {
+		slots() {	//This is in the methods not to be cached : this.$slots.default never invalidates
 			return this.$slots.default
 				.map(x=>x.componentInstance)
 				.filter(x=>x);
-		}
-	},
-	methods: {
+		},
 		give(items) {
 			this.oldSlots = items;
 			var slots = {};
@@ -28,11 +26,10 @@ export const Pimp = {
 		return h(this.$vnode.data.tag||'div', {style:{display: 'none'}}, this.$slots.default);
 	},
 	mounted() {
-		//We wrap the values in a function to be sure the vnodes does not become observed
-		this.give(this.slots);
+		this.give(this.slots());
 	},
 	updated() {
-		var slots = this.slots;
+		var slots = this.slots();
 		if(slots.length != this.oldSlots.length)
 			this.give(slots);
 		else for(let i in slots)

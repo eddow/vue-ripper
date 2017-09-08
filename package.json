@@ -1,6 +1,6 @@
 {
   "name": "vue-ripper",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Ripping components appart with vue2",
   "main": "dist/vue-ripper.js",
   "scripts": {
