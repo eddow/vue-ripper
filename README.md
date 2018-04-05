@@ -127,14 +127,3 @@ The depot can also be given a `map: (slot: vNode[], name: string, h: createEleme
 - `h` is the render-function provided by `Vue` to create vNodes.
 
 If the function returns nothing, the `slots` will be used. In order to render nothing, `[]` has to be returned.
-
-## Support development
-I contribute for free with drive, passion and time.
-If you like what I do, you can promote me to do it more.
-
-These are the only *like* buttons that have a real effect.
-
-- [paypal.me/eeddow](https://www.paypal.me/eeddow)
-- ETH: 0xb79b61130bc5726ddab6c1d59c3e0479afe69540
-- BTC: 38HbE73qfLf2qP6Ce1ppYwZf458nugS3KY
-- BCH: 3K81iYWwLZuWXY1qHcBL559FYraUqKMkEp

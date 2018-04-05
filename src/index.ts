@@ -45,8 +45,9 @@ export const Ripped = {
 		ripper: {type: Object},
 		render: {type: Function}
 	},
+	//TODO: watch ripper change for $on/$off('updated') !
 	methods: {
-		childUpdate: function() {
+		childUpdate() {
 			this.$forceUpdate();
 		}
 	},

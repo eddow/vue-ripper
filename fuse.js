@@ -1,5 +1,5 @@
 const {
-	Sparky, FuseBox, UglifyJSPlugin, TypeScriptHelpers, CSSPlugin, EnvPlugin, VuePlugin,
+	Sparky, FuseBox, UglifyJSPlugin, CSSPlugin, EnvPlugin, VueComponentPlugin,
 	JSONPlugin, BabelPlugin, HotReloadPlugin, QuantumPlugin
 } = require('fuse-box');
 let producer;
@@ -11,46 +11,30 @@ Sparky.task("build", ()=> {
 		output: "dist/$name.js",
 		package: 'vue-ripper',
 		plugins: [
-			TypeScriptHelpers(),
 			EnvPlugin({NODE_ENV: production ? "production" : "development"}),
-			CSSPlugin(), production && UglifyJSPlugin(),
-			VuePlugin(),
+			CSSPlugin(),
+			production && UglifyJSPlugin(),
+			VueComponentPlugin(),
 			JSONPlugin(),
-			QuantumPlugin({
+			production && QuantumPlugin({
 				bakeApiIntoBundle : 'vue-ripper',
 				containedAPI : true,
 				target: 'npm'
 			})
 		],
-		hash: production,
-		//hmr: true,
-		//sourceMaps: {project: true, vendor: false},
-		//cache: false,
-		cache: !production,
+		cache: false,
 		debug: !production, log: !production,
 		package: {
 			name: "vue-ripper",
 			main: 'index.ts'
 		},
-		alias: {
-			//vue: 'vue/dist/vue.common.js',
-		},
 		globals: {
 			'vue-ripper': '*'
-		}/*,
-		shim: {
-			jquery: {
-				source: "node_modules/jquery/dist/jquery.js",
-				exports: "$",
-			}
-		}*/
+		}
 	});
 
 	const app = fuse.bundle("vue-ripper")
-		//.sourceMaps(true)
-		//.plugin(HotReloadPlugin({port: 4445}))
-    .instructions('!> [index.ts] - *.d.ts');
-	//if (!production) app.hmr();
+    	.instructions('!> [index.ts] - *.d.ts');
 
 	return fuse.run();
 });
@@ -60,16 +44,15 @@ Sparky.task("test", ()=> {
 		output: "test/$name.js",
 		package: 'test',
 		plugins: [
-			TypeScriptHelpers(),
 			EnvPlugin({NODE_ENV: production ? "production" : "development"}),
 			CSSPlugin(), production && UglifyJSPlugin(),
-			VuePlugin(),
+			VueComponentPlugin(),
 			JSONPlugin()
 		],
 		cache: false,
 		debug: true, log: true,
 		alias: {
-			vue: 'vue/dist/vue.common.js',
+			vue: 'vue/dist/vue.runtime.esm.js',
 			'vue-ripper': '~/src/index'
 		}
 	});
