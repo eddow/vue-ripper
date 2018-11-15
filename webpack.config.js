@@ -12,7 +12,7 @@ module.exports = {
 	output: {
 		filename: '[name].js',
 		path: path.resolve(__dirname, "dist"),
-		libraryTarget: 'uamd',
+		libraryTarget: 'umd',
 		library: 'vue-ripper',
 		umdNamedDefine: true,
 		libraryExport: 'default'
