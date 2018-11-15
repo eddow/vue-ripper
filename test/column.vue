@@ -3,7 +3,7 @@
 		<template slot="header">
 			{{letter.toUpperCase()}}
 		</template>
-		<template scope="scope">
+		<template slot-scope="scope">
 			{{letter.toLowerCase() + scope.number}}
 		</template>
 		{{letter.toLowerCase()}}

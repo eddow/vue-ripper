@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "sourceMap": true,
+	"declaration": true,
 	"sourceRoot": "./src/",
 	"outDir": "./dist/",
 	"inlineSources": true,
@@ -16,18 +17,14 @@
 		"es2015.promise"
     ],
     "allowSyntheticDefaultImports": true,
-    "allowJs": true,
 	"typeRoots": ["./node_modules/@types"],
-	"baseUrl": "./",
-	"paths": {
-		"vue-ripper": ["./dist/vue-ripper"]
-    }
-  },
+	"baseUrl": "./"
+  	},
 	"exclude": [
 		"**/*.spec.ts"
 	],
 	"include": [
-		"./**/*.ts",
-		"./**/*.vue"
+		"./src/**/*.ts",
+		"./src/**/*.vue"
 	]
 }

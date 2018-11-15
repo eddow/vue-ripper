@@ -52,7 +52,7 @@ In our exemlpe, this is the template of the column.
 		<template slot="header" class="table-header">
 			{{letter.toUpperCase()}}
 		</template>
-		<template scope="scope" class="table-cell">
+		<template slot-scope="scope" class="table-cell">
 			{{letter.toLowerCase() + scope.number}}
 		</template>
 	</ripper>
