@@ -14,8 +14,7 @@ module.exports = {
 		path: path.resolve(__dirname, "dist"),
 		libraryTarget: 'umd',
 		library: 'vue-ripper',
-		umdNamedDefine: true,
-		libraryExport: 'default'
+		umdNamedDefine: true
 	},
 	plugins: [
 		new VueLoader.VueLoaderPlugin()

@@ -90,12 +90,8 @@ export const Depot = {
 }
 
 const components = {Ripper, Pimp, Ripped, Depot};
-const exp = {
+export default {
 	install(Vue, options) {
 		for(let i in components) Vue.component(i, components[i]);
 	}
 };
-
-Object.assign(exp, components);
-
-export default exp;
