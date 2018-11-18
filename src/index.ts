@@ -15,10 +15,7 @@ export const Pimp = {
 		},
 		give(items) {
 			this.oldSlots = items;
-			var slots = {};
-			for(let item of items) slots[item._uid] = item;
-			Object.defineProperty(slots, 'length', {value: items.length});
-			this.$emit('items', slots);
+			this.$emit('items', items);
 		}
 	},
 	props: ['items'],
