@@ -68,7 +68,7 @@ A `pimp` will basically render a `<div style="display: none;" />`, although a ta
 
 Its role is to keep its `v-model` updated with the list of `VueComponent` it directly contains. For configurable components, that is in the `pimp` that the `<slot />` is placed.
 
-Note: the list is given as an array of component. For the key, use `component.uid`
+Note: the list is given as an array of component. For the key, use `component._uid`
 
 Regular usage:
 ```html

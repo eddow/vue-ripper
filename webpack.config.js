@@ -1,7 +1,6 @@
 var webpack = require("webpack"),
 	path = require("path"),
-	externals = require('webpack-node-externals'),
-	VueLoader = require('vue-loader');
+	externals = require('webpack-node-externals');
 
 module.exports = {
 	mode: 'development',	//This is meant to be bundled afterward anyway
@@ -16,9 +15,6 @@ module.exports = {
 		library: 'vue-ripper',
 		umdNamedDefine: true
 	},
-	plugins: [
-		new VueLoader.VueLoaderPlugin()
-	],
 	externals: [
 		externals()
 	],
@@ -27,23 +23,12 @@ module.exports = {
 		rules: [{
 			test: /\.tsx?$/,
 			exclude: /node_modules/,
-			loader: 'ts-loader',
-			options: {
-				appendTsSuffixTo: [/\.vue$/]
-			}
+			loader: 'ts-loader'
 		}, {
 			enforce: 'pre',
 			test: /\.tsx?$/,
 			exclude: /node_modules/,
 			use: "source-map-loader"
-		}, {
-			test: /\.vue$/,
-			loader: 'vue-loader',
-			options: {
-				loaders: {
-					ts: 'ts-loader'
-				}
-			}
 		}]
 	},
 	resolve: {

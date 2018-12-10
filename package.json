@@ -4,6 +4,8 @@
   "description": "Ripping components appart with vue2",
   "main": "dist/vue-ripper.js",
   "ts:main": "src/index.ts",
+  "typings": "dist/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "prepack": "webpack",
     "test": "webpack --config test/webpack.config.js"
@@ -19,7 +21,7 @@
     "custom"
   ],
   "author": "fmdm",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/eddow/vue-ripper/issues"
   },
