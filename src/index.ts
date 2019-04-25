@@ -9,9 +9,11 @@ export const Pimp = {
 	},
 	methods: {
 		slots() {	//This is in the methods not to be cached : this.$slots.default never invalidates
-			return this.$slots.default
-				.map(x=>x.componentInstance)
-				.filter(x=>x);
+			return this.$slots.default ?
+				this.$slots.default
+					.map(x=>x.componentInstance)
+					.filter(x=>x) :
+				[];
 		},
 		give(items) {
 			this.oldSlots = items;
